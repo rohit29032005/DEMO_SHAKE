@@ -30,6 +30,12 @@ export default function Home() {
     setLastShakeTime(new Date())
     setIntensityScore(intensity)
 
+    // 🔊 Play alert sound
+    const audio = new Audio("/sound.mp3") // Make sure sound.mp3 is in the /public folder
+    audio.play().catch((e) => {
+      console.warn("Audio play failed or was blocked:", e)
+    })
+
     // Reset shake alert after 5 seconds
     setTimeout(() => {
       setShakeDetected(false)
